@@ -1,12 +1,12 @@
-
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
-import { extractText, extractTextFromPdf } from '@/lib/pdf-service'
+import { extractText } from '@/lib/pdf-service'
+import { analyzeResume } from '@/lib/analyze-service'
 
 export async function POST(req: Request) {
     try {
         if (!supabaseAdmin) {
-            console.error('[Batch Analysis] supabaseAdmin não inicializado (chave hiante?)')
+            console.error('[Batch Analysis] supabaseAdmin não inicializado (chave ausente?)')
             return NextResponse.json({ error: 'Erro interno: Configuração de servidor incompleta.' }, { status: 500 })
         }
 
@@ -16,104 +16,147 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'No files provided' }, { status: 400 })
         }
 
-        console.log(`[Batch Analysis] Iniciando processamento de ${files.length} arquivos para Job ID: ${jobId}`)
+        console.log(`[Batch Analysis] Iniciando processamento de ${files.length} arquivo(s). JobID: ${jobId || 'Banco de Talentos'}`)
 
-        // 1. Processar arquivos em paralelo
-        const processedFiles = await Promise.all(files.map(async (file: any) => {
+        // ── FASE 1: Extrair texto dos PDFs em paralelo ──────────────
+        const extractedFiles = await Promise.all(files.map(async (file: any) => {
             try {
-                // Baixar arquivo do Supabase Storage
                 const { data: fileBlob, error: downloadError } = await supabaseAdmin
                     .storage
                     .from('resumes')
                     .download(file.path)
 
                 if (downloadError || !fileBlob) {
-                    console.error(`[Batch] Erro ao baixar arquivo ${file.path}:`, downloadError)
-                    return { ...file, error: 'Download failed', text: '' }
+                    console.error(`[Batch] Erro ao baixar ${file.path}:`, downloadError?.message)
+                    await supabaseAdmin.from('job_applications').update({
+                        ai_status: 'ERROR',
+                        ai_explanation: `Falha no download: ${downloadError?.message || 'Erro desconhecido'}`,
+                    }).eq('id', file.id)
+                    return { ...file, error: 'Download failed' }
                 }
 
-                // Extrair texto
                 const arrayBuffer = await fileBlob.arrayBuffer()
                 const buffer = Buffer.from(arrayBuffer)
                 const text = await extractText(buffer, file.name)
 
-                // Atualizar status no banco para indicar que extração foi feita
-                const { error: updateError } = await supabaseAdmin
-                    .from('job_applications')
-                    .update({
-                        ai_status: 'EXTRACTED', // Status intermediário
-                        audit_log: [{
-                            action: 'BATCH_EXTRACT_SUCCESS',
-                            timestamp: new Date().toISOString(),
-                            details: 'Texto extraído via API Batch'
-                        }]
-                    })
-                    .eq('id', file.id)
-
-                if (updateError) {
-                    console.error(`[Batch] Erro ao atualizar status EXTRACTED:`, updateError)
-                    // Non-fatal, continue
-                }
+                console.log(`[Batch] ✅ Texto extraído: ${file.name} (${text.length} chars)`)
 
                 return {
                     applicationId: file.id,
-                    candidateName: file.name.replace(/\.[^/.]+$/, ""), // Remove extensão
+                    candidateName: file.name.replace(/\.[^/.]+$/, ''),
                     resumeText: text,
-                    resumeUrl: file.publicUrl
+                    resumeUrl: file.publicUrl,
                 }
             } catch (err: any) {
-                console.error(`[Batch] Falha no processamento do arquivo ${file.id}:`, err)
-
-                // IMPORTANT: Update status to ERROR immediately so UI stops loading
-                // Wrap in try-catch to prevent double-crash
+                console.error(`[Batch] Falha na extração de ${file.id}:`, err.message)
                 try {
-                    await supabaseAdmin
-                        .from('job_applications')
-                        .update({
-                            ai_status: 'ERROR',
-                            ai_explanation: `Falha no download/extração: ${err.message || 'Erro desconhecido'}`, // Descriptive error
-                            audit_log: [{
-                                action: 'BATCH_EXTRACT_ERROR',
-                                timestamp: new Date().toISOString(),
-                                details: err.message
-                            }]
-                        })
-                        .eq('id', file.id)
-                } catch (dbErr) {
-                    console.error('[Batch] Falha crítica ao salvar erro no banco:', dbErr)
-                }
-
-                return { ...file, error: err.message || 'Extraction failed', text: '' }
+                    await supabaseAdmin.from('job_applications').update({
+                        ai_status: 'ERROR',
+                        ai_explanation: `Falha na extração: ${err.message || 'Erro desconhecido'}`,
+                    }).eq('id', file.id)
+                } catch { }
+                return { ...file, error: err.message }
             }
         }))
 
-        // Filtrar apenas os sucessos para envio ao AI Agent
-        const validApplications = processedFiles.filter(f => !f.error && f.resumeText && f.resumeText.length > 0) // Allow short text if valid
-        // Errors are already handled in the loop above (status updated to ERROR)
-        const errors = processedFiles.filter(f => f.error)
+        const validFiles = extractedFiles.filter(f => !f.error && f.resumeText && f.resumeText.length > 0)
+        const extractErrors = extractedFiles.filter(f => f.error)
 
-        // Se houver erros, atualizar status desses (já feito no catch, mas reforçando se vazou)
-        // ... (removed redundant error update key) ...
-
-        if (validApplications.length === 0 && errors.length > 0) {
+        if (validFiles.length === 0) {
             return NextResponse.json({
                 success: false,
-                message: 'Nenhum arquivo pôde ser processado com sucesso.',
-                errors
-            }, { status: 400 }) // Return 400, not 500, with JSON
+                message: 'Nenhum arquivo pôde ser processado.',
+                errors: extractErrors,
+            }, { status: 400 })
         }
 
-        // 2. O n8n foi substituído pelo AI Agent (scripts/ai-agent.ts)
-        // O robô detecta automaticamente as linhas com status 'EXTRACTED'
-        console.log(`[Batch] ✅ Processamento finalizado. O Agente IA assumirá daqui.`)
-        console.log(`[Batch] ========================================`)
+        // ── FASE 2: Buscar dados da vaga (se houver) ───────────────
+        let jobTitle = 'Análise Geral'
+        let jobDescription = 'Avaliação de perfil geral.'
+        let jobRequirements = 'Boa comunicação e experiência relevante.'
 
+        if (jobId) {
+            const { data: job } = await supabaseAdmin
+                .from('jobs')
+                .select('title, description, requirements')
+                .eq('id', jobId)
+                .single()
+
+            if (job) {
+                jobTitle = job.title || jobTitle
+                jobDescription = job.description || jobDescription
+                jobRequirements = job.requirements || jobRequirements
+            }
+        }
+
+        // ── FASE 3: Análise OpenAI para cada candidato ─────────────
+        console.log(`[Batch] 🤖 Iniciando análise IA para ${validFiles.length} candidato(s)...`)
+
+        const analysisResults = await Promise.allSettled(
+            validFiles.map(async (file: any) => {
+                // Marcar como "analisando" antes de começar
+                await supabaseAdmin.from('job_applications').update({
+                    ai_status: 'ANALYZING',
+                    execution_stage: 'STARTING',
+                    heartbeat: new Date().toISOString(),
+                }).eq('id', file.applicationId)
+
+                const result = await analyzeResume(file.applicationId, file.resumeText, {
+                    candidateName: file.candidateName,
+                    jobId: jobId || null,
+                    jobTitle,
+                    jobDescription,
+                    jobRequirements,
+                    analysisMode,
+                })
+
+                if (result.success && result.updatePayload) {
+                    // Salvar resultado no banco
+                    const { error: saveError } = await supabaseAdmin
+                        .from('job_applications')
+                        .update(result.updatePayload)
+                        .eq('id', file.applicationId)
+
+                    if (saveError) {
+                        // Fallback: salvar apenas o essencial
+                        console.warn(`[Batch] Fallback save para ${file.applicationId}:`, saveError.message)
+                        await supabaseAdmin.from('job_applications').update({
+                            ai_score: result.updatePayload.ai_score,
+                            ai_explanation: result.updatePayload.ai_explanation,
+                            criteria_evaluation: result.updatePayload.criteria_evaluation,
+                            ai_status: 'DONE',
+                        }).eq('id', file.applicationId)
+                    }
+                } else if (result.deleted) {
+                    // Documento não era currículo — deletar
+                    await supabaseAdmin.from('job_applications').delete().eq('id', file.applicationId)
+                } else {
+                    // Erro na análise
+                    await supabaseAdmin.from('job_applications').update({
+                        ai_status: 'ERROR',
+                        ai_explanation: result.error || 'Erro na análise IA',
+                        execution_stage: 'ERROR',
+                    }).eq('id', file.applicationId)
+                }
+
+                return result
+            })
+        )
+
+        // Contabilizar resultados
+        const successes = analysisResults.filter(r => r.status === 'fulfilled' && (r.value as any).success).length
+        const aiErrors = analysisResults.filter(r => r.status === 'rejected' || (r.status === 'fulfilled' && !(r.value as any).success)).length
+
+        console.log(`[Batch] ✅ Concluído! Sucesso: ${successes} | Erros IA: ${aiErrors} | Erros Extração: ${extractErrors.length}`)
 
         return NextResponse.json({
             success: true,
-            message: `Enviados ${validApplications.length} candidatos para análise.`,
-            processed: validApplications.length,
-            errors: errors // Retornar o array completo para o frontend processar
+            message: `${successes} candidato(s) analisados com sucesso.`,
+            processed: successes,
+            errors: [...extractErrors, ...analysisResults
+                .filter(r => r.status === 'fulfilled' && !(r.value as any).success)
+                .map(r => (r as any).value)
+            ],
         })
 
     } catch (error: any) {
