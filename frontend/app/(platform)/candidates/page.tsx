@@ -1,4 +1,17 @@
-import { Suspense } from 'react'
+'use client'
+
+import React, { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
+import { toast } from 'sonner'
+import { Users, BrainCircuit, CheckCircle2, Filter, Loader2, Zap, LayoutGrid, List, Trash2, AlertCircle } from 'lucide-react'
+import { Header } from '@/components/layout/header'
+import { CandidateCard } from '@/components/candidates/CandidateCard'
+import { CandidateSkeleton } from '@/components/candidates/CandidateSkeleton'
+import { PdfViewer } from '@/components/candidates/PdfViewer'
+import { JobSelectorModal } from '@/components/candidates/JobSelectorModal'
+import { NewJobModal } from '@/components/candidates/NewJobModal'
+import { calculateWeightedScore } from '@/lib/scoring'
 
 function CandidatesPageContent() {
     const searchParams = useSearchParams()
