@@ -30,19 +30,21 @@ export async function getGmailClient(userId: string) {
 
     if (isExpired) {
         try {
-            const { tokens } = await oauth2Client.refreshAccessToken();
+            const { credentials } = await oauth2Client.refreshAccessToken();
 
-            // Update tokens in DB
-            await supabaseAdmin
-                .from('email_integrations')
-                .update({
-                    access_token: tokens.access_token,
-                    expires_at: new Date(tokens.expiry_date!).toISOString(),
-                    updated_at: new Date().toISOString()
-                })
-                .eq('id', integration.id);
+            if (credentials) {
+                // Update tokens in DB
+                await supabaseAdmin
+                    .from('email_integrations')
+                    .update({
+                        access_token: credentials.access_token,
+                        expires_at: new Date(credentials.expiry_date!).toISOString(),
+                        updated_at: new Date().toISOString()
+                    })
+                    .eq('id', integration.id);
 
-            oauth2Client.setCredentials(tokens);
+                oauth2Client.setCredentials(credentials);
+            }
         } catch (refreshError) {
             console.error('Error refreshing token:', refreshError);
             throw new Error('Failed to refresh Gmail token');
