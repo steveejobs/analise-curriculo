@@ -85,7 +85,9 @@ function JobSelector({ jobs, selectedJob, onSelect, loading, onRefresh }: JobSel
     )
 }
 
-export default function PupLinePage() {
+import { Suspense } from 'react'
+
+function PupLinePageContent() {
     const [candidates, setCandidates] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
     const [jobs, setJobs] = useState<any[]>([])
@@ -272,5 +274,17 @@ export default function PupLinePage() {
             />
 
         </div>
+    )
+}
+
+export default function PupLinePage() {
+    return (
+        <Suspense fallback={
+            <div className="flex items-center justify-center h-full min-h-screen">
+                <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+            </div>
+        }>
+            <PupLinePageContent />
+        </Suspense>
     )
 }

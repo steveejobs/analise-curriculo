@@ -1,50 +1,6 @@
-'use client'
+import { Suspense } from 'react'
 
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { Header } from '@/components/layout/Header'
-import { supabase } from '@/lib/supabase'
-import {
-    Users,
-    Search,
-    Filter,
-    MoreHorizontal,
-    FileText,
-    Trash2,
-    Eye,
-    CheckCircle2,
-    Clock,
-    AlertCircle,
-    Loader2,
-    BrainCircuit,
-    Zap,
-    LayoutGrid,
-    List
-} from 'lucide-react'
-import { toast } from 'sonner'
-import { PdfViewer } from '@/components/ui/PdfViewer'
-import { CandidateCard } from '@/components/CandidateCard'
-import { CandidateSkeleton } from '@/components/CandidateSkeleton'
-import { calculateWeightedScore } from '@/lib/scoring'
-import { JobSelectorModal } from '@/components/candidates/JobSelectorModal'
-import { NewJobModal } from '@/components/crm/NewJobModal'
-
-import { useSearchParams } from 'next/navigation'
-
-interface JobApplication {
-    id: string
-    candidate_name: string
-    candidate_email: string
-    created_at: string
-    ai_status: string
-    ai_score: number
-    criteria_evaluation: any
-    resume_url: string
-    job_id?: string | null
-    finalScore?: number
-}
-
-export default function CandidatesPage() {
+function CandidatesPageContent() {
     const searchParams = useSearchParams()
     const initialStatus = searchParams.get('status') || 'ALL'
     const initialCandidateId = searchParams.get('id')
@@ -80,8 +36,6 @@ export default function CandidatesPage() {
         qualified: candidates.filter(c => c.ai_status === 'DONE' && c.ai_score >= 70).length,
         hired: 0 // Future extension
     }
-
-    // ... (rest of code)
 
 
 
@@ -365,7 +319,7 @@ export default function CandidatesPage() {
                     'Especialista': 4,
                     // Legado
                     'Junior': 1,
-                    'Mid-Level': 2,
+                    'Mid-Level': 1,
                     'Senior': 3
                 }
 
@@ -695,6 +649,18 @@ export default function CandidatesPage() {
             </div>
         </div>
     );
+}
+
+export default function CandidatesPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex items-center justify-center h-full">
+                <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+            </div>
+        }>
+            <CandidatesPageContent />
+        </Suspense>
+    )
 }
 
 function StatusBadge({ status, score }: { status: string, score: number }) {
