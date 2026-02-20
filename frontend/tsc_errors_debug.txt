@@ -1,0 +1,1 @@
+﻿app/api/candidates/compare/route.ts(48,50): error TS7006: Parameter 'c' implicitly has an 'any' type.

@@ -1,0 +1,101 @@
+{
+  "id": "f1c2957b-685c-4759-a1df-65176dd74e14",
+  "job_id": "cf16facc-046d-460e-86a5-9b2e5c0c19a9",
+  "candidate_name": "Curriculo_Enzo_Rabelo_Silva_Profissional",
+  "candidate_email": "pending@extraction.ai",
+  "resume_url": "https://eifzdkdsbhwkajxvmgjb.supabase.co/storage/v1/object/public/resumes/bulk/s0zatf.pdf",
+  "resume_text": null,
+  "ai_status": "DONE",
+  "ai_score": 15,
+  "ai_explanation": "O candidato possui um perfil de Jovem Aprendiz, com habilidades relevantes, como proatividade e boa comunicação. No entanto, ainda não apresenta evidências concretas de resultados ou experiências anteriores que justifiquem uma pontuação mais alta.",
+  "criteria_evaluation": {
+    "real_gaps": [],
+    "top_skills": [
+      "Proatividade",
+      "Pontualidade",
+      "Organização",
+      "Boa comunicação",
+      "Empatia"
+    ],
+    "base_scores": {
+      "cultura": 20,
+      "tecnica": 10,
+      "maturidade": 15,
+      "performance": 0
+    },
+    "caps_applied": [],
+    "match_global": 15,
+    "weights_used": {
+      "cultura": 0.5,
+      "tecnica": 0.5
+    },
+    "analysis_mode": "normal",
+    "candidate_name": "Enzo Rabelo Silva",
+    "role_archetype": "outros",
+    "schema_version": "1.2",
+    "candidate_email": "enzorabelosilva08@gmail.com",
+    "candidate_phone": "(63) 99967-6919",
+    "source_detected": "Upload",
+    "identified_risks": [],
+    "missing_sections": [],
+    "briefing_category": "Operacional",
+    "behavioral_profile": {
+      "autoafirmacoes": [],
+      "sinais_indiretos": [],
+      "comportamentos_comprovados": []
+    },
+    "candidate_location": "Araguaína/TO",
+    "detailed_rationale": {
+      "cultura": "",
+      "tecnica": "",
+      "maturidade": "",
+      "performance": ""
+    },
+    "extraction_quality": "medium",
+    "technical_capacity": {
+      "conhecimento_declarado": [
+        "Facilidade para aprender"
+      ],
+      "evidencias_comprovadas": [],
+      "evidencias_contextuais": [
+        "Comprometimento com horários",
+        "Interesse em crescimento profissional"
+      ]
+    },
+    "analysis_confidence": "Média",
+    "detailed_experience": [],
+    "estimated_seniority": "Estagiário",
+    "interview_questions": [],
+    "professional_summary": "Jovem aprendiz em busca de desenvolvimento profissional, com habilidades em comunicação e trabalho em equipe.",
+    "professional_maturity": "Iniciante",
+    "consolidated_rationale": "O candidato possui um perfil de Jovem Aprendiz, com habilidades relevantes, como proatividade e boa comunicação. No entanto, ainda não apresenta evidências concretas de resultados ou experiências anteriores que justifiquem uma pontuação mais alta.",
+    "confidence_by_dimension": {
+      "cultura": 50,
+      "tecnica": 50,
+      "maturidade": 50,
+      "performance": 50
+    },
+    "identified_differentials": []
+  },
+  "match_score": null,
+  "audit_log": [
+    {
+      "action": "BATCH_EXTRACT_SUCCESS",
+      "details": "Texto extraído via API Batch",
+      "timestamp": "2026-02-20T07:44:31.614Z"
+    }
+  ],
+  "created_at": "2026-02-20T07:54:29.879297+00:00",
+  "execution_stage": "DONE",
+  "heartbeat": "2026-02-20T08:36:22.513+00:00",
+  "processing_started_at": "2026-02-20T08:36:12.585+00:00",
+  "extraction_quality": "high",
+  "ai_tokens_input": 1319,
+  "ai_tokens_output": 339,
+  "ai_tokens_total": 1658,
+  "ai_cost": 0.00040125,
+  "last_error_stage": null,
+  "resume_hash": "5771ea68d6cc390b95ad9aa9b772b9fb5c139273733c433a16e9204bff724ce9",
+  "pipeline_status": "triagem",
+  "is_discarded": false
+}

@@ -1,0 +1,96 @@
+﻿Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local, .env
+
+node.exe : ÔÜá The 
+"middleware" file 
+convention is 
+deprecated. Please 
+use "proxy" instead. 
+Learn more: https://n
+extjs.org/docs/messag
+es/middleware-to-prox
+y
+No linha:1 
+caractere:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ÔÜá The   
+  "middle...lewar    
+e-to-proxy:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 65s
+  Running TypeScript ...
+Failed to compile.
+
+./app/(platform)/jobs
+/[id]/page.tsx:122:50
+Type error: Type 
+'Candidate[]' is not 
+assignable to type 
+'Candidate[]'. Two 
+different types with 
+this name exist, but 
+they are unrelated.
+  Type 'Candidate' 
+is missing the 
+following properties 
+from type 
+'Candidate': 
+candidate_email, 
+resume_url
+
+[0m [90m 120 
+|[39m               
+  {[90m/* Pipeline 
+Board */[39m}
+ [90m 121 |[39m    
+             [33m<[
+39m[33mdiv[39m clas
+sName[33m=[39m[32m
+"flex-1 
+overflow-x-auto 
+p-8"[39m[33m>[39m
+[31m[1m>[22m[39m
+[90m 122 |[39m      
+               [33m<
+[39m[33mPipelineBoa
+rd[39m jobId[33m=[
+39m{jobId} initialCan
+didates[33m=[39m{ca
+ndidates} [33m/[39m
+[33m>[39m
+ [90m     |[39m    
+                     
+                     
+    
+[31m[1m^[22m[39m
+ [90m 123 |[39m    
+             [33m<[
+39m[33m/[39m[33mdi
+v[39m[33m>[39m
+ [90m 124 |[39m    
+         [33m<[39m
+[33m/[39m[33mdiv[3
+9m[33m>[39m
+ [90m 125 |[39m    
+     [33m<[39m[33m
+/[39m[33mdiv[39m[
+33m>[39m[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null

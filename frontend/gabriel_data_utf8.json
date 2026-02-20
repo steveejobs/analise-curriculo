@@ -1,0 +1,163 @@
+﻿{
+    "value":  [
+                  {
+                      "id":  "ebad7fd6-b1c2-48cc-bb79-ae92d0fc50c8",
+                      "job_id":  null,
+                      "candidate_name":  "Gabriel R. Bandeira",
+                      "candidate_email":  "pending@extraction.ai",
+                      "resume_url":  "https://eifzdkdsbhwkajxvmgjb.supabase.co/storage/v1/object/public/resumes/bulk/78lxqs.pdf",
+                      "resume_text":  null,
+                      "ai_status":  "DONE",
+                      "ai_score":  88,
+                      "ai_explanation":  "Gabriel R. Bandeira é um profissional sênior em marketing com forte foco em resultados e habilidades técnicas avançadas em gestão de tráfego e criação de anúncios. Sua adaptabilidade e resiliência são diferenciais importantes em um mercado em constante evolução. O candidato apresenta uma trajetória profissional consistente e madura, com um potencial elevado para contribuir significativamente em projetos de marketing digital.",
+                      "criteria_evaluation":  {
+                                                  "real_gaps":  [
+
+                                                                ],
+                                                  "top_skills":  [
+                                                                     "Gestão de Tráfego",
+                                                                     "Análise de Dados",
+                                                                     "Estratégia de Vendas",
+                                                                     "Branding",
+                                                                     "Criação de Anúncios"
+                                                                 ],
+                                                  "base_scores":  {
+                                                                      "cultura":  85,
+                                                                      "tecnica":  90,
+                                                                      "maturidade":  90,
+                                                                      "performance":  90
+                                                                  },
+                                                  "caps_applied":  [
+
+                                                                   ],
+                                                  "match_global":  88,
+                                                  "weights_used":  {
+                                                                       "cultura":  0.5,
+                                                                       "tecnica":  0.5
+                                                                   },
+                                                  "analysis_mode":  "normal",
+                                                  "candidate_name":  "Gabriel R. Bandeira",
+                                                  "role_archetype":  "marketing",
+                                                  "schema_version":  "1.2",
+                                                  "candidate_email":  "rbandeira.gabriel@gmail.com",
+                                                  "candidate_phone":  "(99) 98473-6997",
+                                                  "source_detected":  "Upload",
+                                                  "identified_risks":  [
+
+                                                                       ],
+                                                  "missing_sections":  [
+
+                                                                       ],
+                                                  "briefing_category":  "Especialista / Sênior",
+                                                  "behavioral_profile":  {
+                                                                             "autoafirmacoes":  [
+                                                                                                    "Adaptável às mudanças do marketing digital",
+                                                                                                    "Resiliente em situações desafiadoras"
+                                                                                                ],
+                                                                             "sinais_indiretos":  [
+                                                                                                      "Capacidade de resolver problemas de forma eficiente"
+                                                                                                  ],
+                                                                             "comportamentos_comprovados":  [
+                                                                                                                "Orientado a resultados",
+                                                                                                                "Proativo",
+                                                                                                                "Líder nato"
+                                                                                                            ]
+                                                                         },
+                                                  "candidate_location":  "Araguaína - TO",
+                                                  "detailed_rationale":  {
+                                                                             "cultura":  "O candidato demonstra uma forte adaptabilidade e resiliência, características importantes no ambiente dinâmico do marketing digital.",
+                                                                             "tecnica":  "O candidato possui habilidades técnicas sólidas em marketing digital, com foco em gestão de tráfego e criação de anúncios, demonstrando conhecimento em ferramentas como Google Analytics e AdWords.",
+                                                                             "maturidade":  "A trajetória profissional do candidato reflete uma evolução clara e uma maturidade avançada, com habilidades bem desenvolvidas e uma abordagem estratégica.",
+                                                                             "performance":  "Com um histórico comprovado de resultados na geração de leads e ROI, o candidato apresenta uma performance consistente e orientada a resultados."
+                                                                         },
+                                                  "extraction_quality":  "high",
+                                                  "technical_capacity":  {
+                                                                             "conhecimento_declarado":  [
+                                                                                                            "Gestão de Tráfego",
+                                                                                                            "Criação de Anúncios",
+                                                                                                            "Análise de Dados"
+                                                                                                        ],
+                                                                             "evidencias_comprovadas":  [
+                                                                                                            "Histórico garantido de resultados na geração de leads"
+                                                                                                        ],
+                                                                             "evidencias_contextuais":  [
+                                                                                                            "Experiência em diversos canais de mídia paga"
+                                                                                                        ]
+                                                                         },
+                                                  "analysis_confidence":  "Alta",
+                                                  "detailed_experience":  [
+                                                                              {
+                                                                                  "cargo":  "Consultor de Marketing",
+                                                                                  "empresa":  "Agência Mestre",
+                                                                                  "periodo":  "Não especificado",
+                                                                                  "conquistas":  [
+                                                                                                     "Desenvolvimento de estratégias de marketing digital",
+                                                                                                     "Gestão de campanhas de tráfego pago"
+                                                                                                 ]
+                                                                              },
+                                                                              {
+                                                                                  "cargo":  "Gestor de Tráfego Sênior",
+                                                                                  "empresa":  "Internet Innovation",
+                                                                                  "periodo":  "Não especificado",
+                                                                                  "conquistas":  [
+                                                                                                     "Maximização do ROI em campanhas publicitárias"
+                                                                                                 ]
+                                                                              }
+                                                                          ],
+                                                  "estimated_seniority":  "Sênior",
+                                                  "interview_questions":  [
+
+                                                                          ],
+                                                  "professional_summary":  "Profissional especialista em marketing com experiência em gerenciamento de tráfego, criação de sites e anúncios, análise de dados e públicos, e desenvolvimento de estratégias de vendas e branding. Focado em resultados e adaptável às mudanças do marketing digital.",
+                                                  "professional_maturity":  "Avançado",
+                                                  "consolidated_rationale":  "Gabriel R. Bandeira é um profissional sênior em marketing com forte foco em resultados e habilidades técnicas avançadas em gestão de tráfego e criação de anúncios. Sua adaptabilidade e resiliência são diferenciais importantes em um mercado em constante evolução. O candidato apresenta uma trajetória profissional consistente e madura, com um potencial elevado para contribuir significativamente em projetos de marketing digital.",
+                                                  "confidence_by_dimension":  {
+                                                                                  "cultura":  85,
+                                                                                  "tecnica":  90,
+                                                                                  "maturidade":  90,
+                                                                                  "performance":  90
+                                                                              },
+                                                  "identified_differentials":  [
+                                                                                   {
+                                                                                       "item":  "Foco em resultados",
+                                                                                       "impacto":  "alto",
+                                                                                       "evidencias":  [
+                                                                                                          "Histórico de geração de leads e ROI positivo"
+                                                                                                      ],
+                                                                                       "por_que_importa":  "Essencial para maximizar o ROI e alcançar metas de desempenho."
+                                                                                   },
+                                                                                   {
+                                                                                       "item":  "Capacidade de adaptação",
+                                                                                       "impacto":  "alto",
+                                                                                       "evidencias":  [
+                                                                                                          "Experiência em diversas plataformas e tecnologias"
+                                                                                                      ],
+                                                                                       "por_que_importa":  "Permite acompanhar as constantes mudanças do mercado digital."
+                                                                                   }
+                                                                               ]
+                                              },
+                      "match_score":  null,
+                      "audit_log":  [
+                                        {
+                                            "action":  "BATCH_EXTRACT_SUCCESS",
+                                            "details":  "Texto extraído via API Batch",
+                                            "timestamp":  "2026-02-17T23:37:14.019Z"
+                                        }
+                                    ],
+                      "created_at":  "2026-02-17T23:37:18.565164+00:00",
+                      "execution_stage":  "DONE",
+                      "heartbeat":  "2026-02-17T23:37:34.604+00:00",
+                      "processing_started_at":  "2026-02-17T23:37:14.6+00:00",
+                      "extraction_quality":  "high",
+                      "ai_tokens_input":  2511,
+                      "ai_tokens_output":  1089,
+                      "ai_tokens_total":  3600,
+                      "ai_cost":  0.0010300499999999998,
+                      "last_error_stage":  null,
+                      "resume_hash":  "0c63859741eee207852e49a2b86a743e9786f0f48c75ad25e69be176877d222b",
+                      "pipeline_status":  "triagem"
+                  }
+              ],
+    "Count":  1
+}
+

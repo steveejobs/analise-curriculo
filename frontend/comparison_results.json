@@ -1,0 +1,233 @@
+[
+  {
+    "candidate_name": "Gabriel R. Bandeira",
+    "ai_score": 88,
+    "ai_explanation": "Gabriel R. Bandeira é um profissional sênior em marketing com forte foco em resultados e habilidades técnicas avançadas em gestão de tráfego e criação de anúncios. Sua adaptabilidade e resiliência são diferenciais importantes em um mercado em constante evolução. O candidato apresenta uma trajetória profissional consistente e madura, com um potencial elevado para contribuir significativamente em projetos de marketing digital.",
+    "criteria_evaluation": {
+      "real_gaps": [],
+      "top_skills": [
+        "Gestão de Tráfego",
+        "Análise de Dados",
+        "Estratégia de Vendas",
+        "Branding",
+        "Criação de Anúncios"
+      ],
+      "base_scores": {
+        "cultura": 85,
+        "tecnica": 90,
+        "maturidade": 90,
+        "performance": 90
+      },
+      "caps_applied": [],
+      "match_global": 88,
+      "weights_used": {
+        "cultura": 0.5,
+        "tecnica": 0.5
+      },
+      "analysis_mode": "normal",
+      "candidate_name": "Gabriel R. Bandeira",
+      "role_archetype": "marketing",
+      "schema_version": "1.2",
+      "candidate_email": "rbandeira.gabriel@gmail.com",
+      "candidate_phone": "(99) 98473-6997",
+      "source_detected": "Upload",
+      "identified_risks": [],
+      "missing_sections": [],
+      "briefing_category": "Especialista / Sênior",
+      "behavioral_profile": {
+        "autoafirmacoes": [
+          "Adaptável às mudanças do marketing digital",
+          "Resiliente em situações desafiadoras"
+        ],
+        "sinais_indiretos": [
+          "Capacidade de resolver problemas de forma eficiente"
+        ],
+        "comportamentos_comprovados": [
+          "Orientado a resultados",
+          "Proativo",
+          "Líder nato"
+        ]
+      },
+      "candidate_location": "Araguaína - TO",
+      "detailed_rationale": {
+        "cultura": "O candidato demonstra uma forte adaptabilidade e resiliência, características importantes no ambiente dinâmico do marketing digital.",
+        "tecnica": "O candidato possui habilidades técnicas sólidas em marketing digital, com foco em gestão de tráfego e criação de anúncios, demonstrando conhecimento em ferramentas como Google Analytics e AdWords.",
+        "maturidade": "A trajetória profissional do candidato reflete uma evolução clara e uma maturidade avançada, com habilidades bem desenvolvidas e uma abordagem estratégica.",
+        "performance": "Com um histórico comprovado de resultados na geração de leads e ROI, o candidato apresenta uma performance consistente e orientada a resultados."
+      },
+      "extraction_quality": "high",
+      "technical_capacity": {
+        "conhecimento_declarado": [
+          "Gestão de Tráfego",
+          "Criação de Anúncios",
+          "Análise de Dados"
+        ],
+        "evidencias_comprovadas": [
+          "Histórico garantido de resultados na geração de leads"
+        ],
+        "evidencias_contextuais": [
+          "Experiência em diversos canais de mídia paga"
+        ]
+      },
+      "analysis_confidence": "Alta",
+      "detailed_experience": [
+        {
+          "cargo": "Consultor de Marketing",
+          "empresa": "Agência Mestre",
+          "periodo": "Não especificado",
+          "conquistas": [
+            "Desenvolvimento de estratégias de marketing digital",
+            "Gestão de campanhas de tráfego pago"
+          ]
+        },
+        {
+          "cargo": "Gestor de Tráfego Sênior",
+          "empresa": "Internet Innovation",
+          "periodo": "Não especificado",
+          "conquistas": [
+            "Maximização do ROI em campanhas publicitárias"
+          ]
+        }
+      ],
+      "estimated_seniority": "Sênior",
+      "interview_questions": [],
+      "professional_summary": "Profissional especialista em marketing com experiência em gerenciamento de tráfego, criação de sites e anúncios, análise de dados e públicos, e desenvolvimento de estratégias de vendas e branding. Focado em resultados e adaptável às mudanças do marketing digital.",
+      "professional_maturity": "Avançado",
+      "consolidated_rationale": "Gabriel R. Bandeira é um profissional sênior em marketing com forte foco em resultados e habilidades técnicas avançadas em gestão de tráfego e criação de anúncios. Sua adaptabilidade e resiliência são diferenciais importantes em um mercado em constante evolução. O candidato apresenta uma trajetória profissional consistente e madura, com um potencial elevado para contribuir significativamente em projetos de marketing digital.",
+      "confidence_by_dimension": {
+        "cultura": 85,
+        "tecnica": 90,
+        "maturidade": 90,
+        "performance": 90
+      },
+      "identified_differentials": [
+        {
+          "item": "Foco em resultados",
+          "impacto": "alto",
+          "evidencias": [
+            "Histórico de geração de leads e ROI positivo"
+          ],
+          "por_que_importa": "Essencial para maximizar o ROI e alcançar metas de desempenho."
+        },
+        {
+          "item": "Capacidade de adaptação",
+          "impacto": "alto",
+          "evidencias": [
+            "Experiência em diversas plataformas e tecnologias"
+          ],
+          "por_que_importa": "Permite acompanhar as constantes mudanças do mercado digital."
+        }
+      ]
+    }
+  },
+  {
+    "candidate_name": "Jardete Rabelo 2023",
+    "ai_score": 78,
+    "ai_explanation": "Jardete Rabelo apresenta um perfil sólido na área de vendas, com experiência prática e formação acadêmica relevante. Sua trajetória demonstra evolução e maturidade profissional, com habilidades bem desenvolvidas em comunicação e relacionamento com clientes, além de um bom entendimento de estratégias de marketing. O potencial para crescimento na carreira é alto, considerando sua formação em andamento e experiência em setores competitivos.",
+    "criteria_evaluation": {
+      "real_gaps": [],
+      "top_skills": [
+        "Vendas",
+        "Relacionamento com clientes",
+        "Planejamento de visitas",
+        "Estratégias de marketing",
+        "Comunicação assertiva"
+      ],
+      "base_scores": {
+        "cultura": 75,
+        "tecnica": 80,
+        "maturidade": 85,
+        "performance": 80
+      },
+      "caps_applied": [],
+      "match_global": 78,
+      "weights_used": {
+        "cultura": 0.5,
+        "tecnica": 0.5
+      },
+      "analysis_mode": "normal",
+      "candidate_name": "Jardete Rabelo",
+      "role_archetype": "vendas",
+      "schema_version": "1.2",
+      "candidate_email": "jardete.rabelo@hotmail.com",
+      "candidate_phone": "99981182965",
+      "source_detected": "Desconhecido",
+      "identified_risks": [],
+      "missing_sections": [],
+      "briefing_category": "Talento Jovem",
+      "behavioral_profile": {
+        "autoafirmacoes": [
+          "Criatividade e inovação nas abordagens de vendas."
+        ],
+        "sinais_indiretos": [
+          "Capacidade de adaptação e resiliência em ambientes de pressão."
+        ],
+        "comportamentos_comprovados": [
+          "Proatividade em eventos e lançamentos de produtos."
+        ]
+      },
+      "candidate_location": "Av. Teotônio Vilela n° 55, Planalto, Estreito MA, CEP 65900-000",
+      "detailed_rationale": {
+        "cultura": "Apresenta boa capacidade de relacionamento e comunicação, essenciais para a área de vendas.",
+        "tecnica": "Possui sólida experiência em vendas e conhecimento técnico sobre produtos, demonstrando habilidades práticas na área.",
+        "maturidade": "Trajetória profissional consistente, com evolução em cargos e responsabilidades, demonstrando maturidade na atuação.",
+        "performance": "Resultados positivos em vendas e cumprimento de metas, com foco em atendimento ao cliente."
+      },
+      "extraction_quality": "high",
+      "technical_capacity": {
+        "conhecimento_declarado": [
+          "Conhecimento em estratégias de marketing e vendas."
+        ],
+        "evidencias_comprovadas": [
+          "Experiência como representante comercial e consultora de vendas com resultados positivos."
+        ],
+        "evidencias_contextuais": [
+          "Atuação em setores competitivos como farmacêutico e imobiliário."
+        ]
+      },
+      "analysis_confidence": "Alta",
+      "detailed_experience": [
+        {
+          "cargo": "Representante Comercial PJ",
+          "empresa": "JC Distribuidora de Produtos Farmacêuticos LTDA",
+          "periodo": "Jan/2022 - Atual",
+          "conquistas": [
+            "Montagem e atualização de cadastro de clientes.",
+            "Planejamento e controle de roteiros de visitas.",
+            "Promoção e divulgação de produtos."
+          ]
+        },
+        {
+          "cargo": "Consultora de Vendas",
+          "empresa": "Elo Imobiliária",
+          "periodo": "2014 - 2017",
+          "conquistas": [
+            "Atendimento em stand de vendas.",
+            "Trabalho com metas e estratégias de marketing."
+          ]
+        }
+      ],
+      "estimated_seniority": "Pleno",
+      "interview_questions": [],
+      "professional_summary": "Profissional com experiência em vendas e representação comercial, atuando no setor farmacêutico e imobiliário. Habilidade em planejamento, organização e cumprimento de metas, com foco em relacionamento com clientes e estratégias de marketing.",
+      "professional_maturity": "Avançado",
+      "consolidated_rationale": "Jardete Rabelo apresenta um perfil sólido na área de vendas, com experiência prática e formação acadêmica relevante. Sua trajetória demonstra evolução e maturidade profissional, com habilidades bem desenvolvidas em comunicação e relacionamento com clientes, além de um bom entendimento de estratégias de marketing. O potencial para crescimento na carreira é alto, considerando sua formação em andamento e experiência em setores competitivos.",
+      "confidence_by_dimension": {
+        "cultura": 75,
+        "tecnica": 80,
+        "maturidade": 85,
+        "performance": 80
+      },
+      "identified_differentials": [
+        {
+          "item": "MBA em Formação e Resultados de Alta Performance na Propaganda Médica",
+          "impacto": "alto",
+          "evidencias": [
+            "Cursando MBA que agrega valor à atuação como propagandista."
+          ],
+          "por_que_importa": "Diferencial acadêmico que complementa a experiência prática em vendas."
+        }
+      ]
+    }
+  }
+]

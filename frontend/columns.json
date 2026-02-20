@@ -1,0 +1,15 @@
+[
+  "id",
+  "job_id",
+  "candidate_name",
+  "candidate_email",
+  "resume_url",
+  "resume_text",
+  "ai_status",
+  "ai_score",
+  "ai_explanation",
+  "criteria_evaluation",
+  "match_score",
+  "audit_log",
+  "created_at"
+]

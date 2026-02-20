@@ -1,0 +1,56 @@
+[
+  {
+    "id": "10a317fa-d230-43d5-ae0c-fb05b11beb01",
+    "candidate_name": "Curriculo_Enzo_Rabelo_Silva_Profissional",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "aee95bff-302f-474f-b464-3cb83bae419d",
+    "candidate_name": "Gabriel R. Bandeira",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "f1c2957b-685c-4759-a1df-65176dd74e14",
+    "candidate_name": "Curriculo_Enzo_Rabelo_Silva_Profissional",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "b2401bb8-5508-42ca-bc62-da56efdae3dd",
+    "candidate_name": "Gabriel R. Bandeira",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "dcee762c-725f-4790-b4d7-10e100c1acc3",
+    "candidate_name": "Jardete Rabelo 2023",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "9047a1e7-8557-4d33-b0bf-84b08a2fdbbb",
+    "candidate_name": "Jardete Rabelo 2023",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "0dbb6401-a363-4568-811a-88e828175c63",
+    "candidate_name": "Gabriel R. Bandeira",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "c446394f-2e48-435a-838a-e65296caed29",
+    "candidate_name": "Jardete Rabelo 2023",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  },
+  {
+    "id": "e601e0ee-2805-4eec-8ceb-e8613fb7efb0",
+    "candidate_name": "Gabriel R. Bandeira",
+    "ai_status": "DONE",
+    "execution_stage": "DONE"
+  }
+]
