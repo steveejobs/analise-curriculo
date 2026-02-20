@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { Candidate } from '@/lib/types'
+import { PipelineBoard } from '@/components/crm/PipelineBoard'
 
 export default function JobDetailsPage() {
     const params = useParams()
