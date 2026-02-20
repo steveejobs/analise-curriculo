@@ -96,7 +96,7 @@ export async function POST(req: Request) {
         const openai = getOpenAIClient()
 
         // 3. Process each candidate
-        const results = await Promise.allSettled(applications.map(async (app) => {
+        const results = await Promise.allSettled(applications.map(async (app: any) => {
             const extraction = app.criteria_evaluation || {};
 
             const prompt = SYSTEM_PROMPT_RANKING
