@@ -59,6 +59,11 @@ export function DetailedCandidateView({ candidate, analysis }: DetailedCandidate
         performance: analysis.detailed_rationale?.performance || analysis.performance_potencial?.justificativa || ''
     }
 
+    const source = analysis.source_detected || 'Upload'
+    const topSkills = analysis.top_skills || []
+    const caps = analysis.caps_applied || []
+    const archetype = analysis.role_archetype || ''
+
     const technicalLabel = archetype ? `Fit ${archetype.charAt(0).toUpperCase() + archetype.slice(1)}` : 'Fit Técnico'
 
     const confiancaDimensoes = analysis.confidence_by_dimension || analysis.confianca_por_dimensao || {
@@ -70,11 +75,6 @@ export function DetailedCandidateView({ candidate, analysis }: DetailedCandidate
     const quality = {
         level: analysis.extraction_quality || 'medium'
     }
-
-    const source = analysis.source_detected || 'Upload'
-    const topSkills = analysis.top_skills || []
-    const caps = analysis.caps_applied || []
-    const archetype = analysis.role_archetype || ''
 
     const techAnalysis = analysis.technical_capacity || analysis.capacidade_tecnica || {}
     const culturalAnalysis = analysis.behavioral_profile || analysis.perfil_comportamental || analysis.cultural_analysis || {}
