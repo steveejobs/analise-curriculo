@@ -112,7 +112,7 @@ export function CandidateCard({ candidate, filterJobId, onOpenProfile, onUpdateS
     const handleDiscard = (e: React.MouseEvent) => {
         e.preventDefault()
         e.stopPropagation()
-        onUpdateStatus?.(candidate.id, 'reprovado')
+        onUpdateStatus?.(candidate.id, 'discarded')
     }
 
     const handleAssignToJob = (e: React.MouseEvent) => {
@@ -253,14 +253,10 @@ export function CandidateCard({ candidate, filterJobId, onOpenProfile, onUpdateS
                             </div>
                         </div>
 
-                        {isAnalyzing ? (
+                        {isAnalyzing && (
                             <div className="flex items-center justify-center w-10 h-8 rounded-xl bg-indigo-50 border border-indigo-100 shadow-sm relative z-20 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                                 <Loader2 size={14} className="text-indigo-600 animate-spin" />
-                            </div>
-                        ) : (
-                            <div className={`px-2.5 py-1 rounded-xl text-[11px] font-black border ${getScoreColor(finalScore)} shadow-sm tracking-tighter relative z-20`}>
-                                {finalScore}%
                             </div>
                         )}
                     </div>
@@ -307,9 +303,16 @@ export function CandidateCard({ candidate, filterJobId, onOpenProfile, onUpdateS
 
                     {/* Footer Info */}
                     <div className="flex items-center justify-between pt-3 mt-1 border-t border-zinc-50/80">
-                        <span className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.1em]">
-                            {briefingCategory}
-                        </span>
+                        <div className="flex items-center gap-3">
+                            <span className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.1em]">
+                                {briefingCategory}
+                            </span>
+                            {!isAnalyzing && (
+                                <div className={`px-2 py-0.5 rounded-lg text-[10px] font-black border ${getScoreColor(finalScore)} shadow-sm tracking-tighter`}>
+                                    {finalScore}%
+                                </div>
+                            )}
+                        </div>
 
                         <div className="flex items-center gap-1.5 text-[9px] font-bold text-zinc-400 opacity-60">
                             <Calendar size={10} />

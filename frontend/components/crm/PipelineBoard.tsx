@@ -77,6 +77,7 @@ export function PipelineBoard({ jobId, initialCandidates, pipelineConfig }: Pipe
         if (['reviewing', 'interviewing'].includes(aiStatus || '')) return 'qualificacao';
         if (['hired'].includes(aiStatus || '')) return 'finalistas';
         if (['rejected', 'rejeitado', 'reprovado'].includes(aiStatus || '')) return 'reprovado';
+        if (['discarded', 'descartado'].includes(aiStatus || '')) return 'discarded';
 
         return currentColumns[0]?.id || 'triagem';
     }
@@ -104,6 +105,9 @@ export function PipelineBoard({ jobId, initialCandidates, pipelineConfig }: Pipe
 
                 // Allow showing original if status is 'triagem' to be robust against cloning failures
                 if (isOriginalFromBank && c.pipeline_status !== 'triagem') return false;
+
+                // 3. EXCLUSÃO: Nunca mostramos candidatos descartados nas colunas principais da Pup Line
+                if (c.pipeline_status === 'discarded') return false;
 
                 return true;
 
@@ -154,7 +158,12 @@ export function PipelineBoard({ jobId, initialCandidates, pipelineConfig }: Pipe
                 .eq('id', candidateId);
 
             if (error) throw error;
-            toast.success(`Candidato movido para ${currentColumns.find(c => c.id === newStatus)?.title || newStatus}`);
+
+            if (newStatus === 'discarded') {
+                toast.success('Candidato movido para Descartados');
+            } else {
+                toast.success(`Candidato movido para ${currentColumns.find(c => c.id === newStatus)?.title || newStatus}`);
+            }
 
             // 3. Email Automation
             if (newStatus === 'reprovado') {
