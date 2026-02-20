@@ -2,12 +2,13 @@
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
+const getOpenAI = () => new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 })
 
 export async function POST(req: Request) {
     try {
+        const openai = getOpenAI();
         const { action, candidateName, gaps, detectedRole } = await req.json()
 
         if (action === 'generate-script') {

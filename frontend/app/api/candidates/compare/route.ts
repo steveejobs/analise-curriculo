@@ -2,12 +2,13 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
+const getOpenAI = () => new OpenAI({
     apiKey: process.env.OPENAI_API_KEY || '',
 });
 
 export async function POST(req: Request) {
     try {
+        const openai = getOpenAI();
         const { jobId } = await req.json();
 
         if (!jobId) {
