@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { Header } from '@/components/layout/Header'
 import { supabase } from '@/lib/supabase'
 import { PipelineBoard } from '@/components/crm/PipelineBoard'
-import { Search, Filter, Users, Loader2, Plus, ChevronDown, Check, RefreshCw } from 'lucide-react'
+import { Search, Filter, Users, Loader2, Plus, ChevronDown, Check, RefreshCw, BrainCircuit } from 'lucide-react'
 import { NewJobModal } from '@/components/crm/NewJobModal'
 import { toast } from 'sonner'
 
@@ -192,36 +192,70 @@ function PupLinePageContent() {
                         <div className="h-6 w-px bg-zinc-200/60"></div>
 
                         {selectedJob !== 'all' && (
-                            <button
-                                onClick={async () => {
-                                    if (!confirm('Deseja realmente re-analisar todos os candidatos desta vaga? Isso consumirá novos tokens, mas usará o texto já extraído.')) return;
-                                    setLoading(true);
-                                    try {
-                                        const response = await fetch('/api/candidates/reanalyze', {
-                                            method: 'POST',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ jobId: selectedJob })
-                                        });
-                                        if (response.ok) {
-                                            toast.success('Re-análise iniciada!');
-                                            fetchData();
-                                        } else {
-                                            const err = await response.json();
-                                            toast.error(err.error || 'Erro ao iniciar re-análise');
+                            <div className="flex items-center gap-2">
+                                <button
+                                    onClick={async () => {
+                                        if (!confirm('Deseja realmente ativar o Agente 2 de Ranking? Ele calculará o match semântico baseado nos requisitos desta vaga.')) return;
+                                        setLoading(true);
+                                        try {
+                                            const response = await fetch('/api/analyze/rank', {
+                                                method: 'POST',
+                                                headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({ jobId: selectedJob })
+                                            });
+                                            if (response.ok) {
+                                                const res = await response.json();
+                                                toast.success(res.message || 'Ranking concluído!');
+                                                fetchData();
+                                            } else {
+                                                const err = await response.json();
+                                                toast.error(err.error || 'Erro ao iniciar ranking');
+                                            }
+                                        } catch (e) {
+                                            toast.error('Erro de conexão');
+                                        } finally {
+                                            setLoading(false);
                                         }
-                                    } catch (e) {
-                                        toast.error('Erro de conexão');
-                                    } finally {
-                                        setLoading(false);
-                                    }
-                                }}
-                                disabled={loading}
-                                className="flex items-center gap-2 px-4 py-2.5 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-100 transition-all active:scale-95 disabled:opacity-50"
-                                title="Forçar nova análise da IA para todos os candidatos desta vaga"
-                            >
-                                <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
-                                <span>Re-analisar Vaga</span>
-                            </button>
+                                    }}
+                                    disabled={loading}
+                                    className="flex items-center gap-2 px-4 py-2.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-100 transition-all active:scale-95 disabled:opacity-50"
+                                    title="Ativar Agente 2: Match Inteligente por Vaga"
+                                >
+                                    <BrainCircuit size={14} className={loading ? "animate-spin" : ""} />
+                                    <span>Ativar Agente 2</span>
+                                </button>
+
+                                <button
+                                    onClick={async () => {
+                                        if (!confirm('Deseja realmente re-analisar todos os candidatos desta vaga? Isso consumirá novos tokens, mas usará o texto já extraído.')) return;
+                                        setLoading(true);
+                                        try {
+                                            const response = await fetch('/api/candidates/reanalyze', {
+                                                method: 'POST',
+                                                headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({ jobId: selectedJob })
+                                            });
+                                            if (response.ok) {
+                                                toast.success('Re-análise iniciada!');
+                                                fetchData();
+                                            } else {
+                                                const err = await response.json();
+                                                toast.error(err.error || 'Erro ao iniciar re-análise');
+                                            }
+                                        } catch (e) {
+                                            toast.error('Erro de conexão');
+                                        } finally {
+                                            setLoading(false);
+                                        }
+                                    }}
+                                    disabled={loading}
+                                    className="flex items-center gap-2 px-4 py-2.5 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-100 transition-all active:scale-95 disabled:opacity-50"
+                                    title="Forçar nova análise da IA para todos os candidatos desta vaga"
+                                >
+                                    <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+                                    <span>Re-analisar Vaga</span>
+                                </button>
+                            </div>
                         )}
 
                         <button
