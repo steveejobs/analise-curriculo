@@ -24,21 +24,7 @@ import {
 import { supabase } from '@/lib/supabase'
 import { DetailedCandidateView } from '@/components/DetailedCandidateView'
 
-interface Candidate {
-    id: string
-    candidate_name: string
-    candidate_email: string
-    resume_url: string
-    ai_score: number
-    ai_status: string
-    ai_explanation: string
-    processed_at: string
-    created_at: string
-    priority?: string
-    criteria_evaluation: any
-    matching_rationale?: string
-    rationale?: string
-}
+import { Candidate } from '@/lib/types'
 
 export default function CandidateDetailPage() {
     const { id } = useParams()
@@ -57,7 +43,7 @@ export default function CandidateDetailPage() {
                     .single()
 
                 if (error) throw error
-                setCandidate(data)
+                setCandidate(data as any)
             } catch (err) {
                 console.error('Erro ao carregar candidato:', err)
             } finally {

@@ -27,21 +27,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { DetailedCandidateView } from '../DetailedCandidateView'
 
-interface Candidate {
-    id: string;
-    candidate_name: string;
-    candidate_email: string;
-    ai_score: number;
-    ai_status: string;
-    resume_url: string;
-    location?: string;
-    pipeline_status?: string;
-    created_at: string;
-    job_id?: string | null;
-    is_discarded?: boolean;
-    execution_stage?: string;
-    criteria_evaluation?: any;
-}
+import { Candidate } from '@/lib/types'
+
 
 interface CandidateCardProps {
     candidate: Candidate;

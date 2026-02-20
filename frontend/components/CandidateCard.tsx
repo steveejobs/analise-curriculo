@@ -28,21 +28,8 @@ import { supabase } from '@/lib/supabase'
 import { toast } from 'sonner'
 import { calculateWeightedScore } from '@/lib/scoring'
 
-// Interfaces matching the AI Agent output v1.2
-interface JobApplication {
-    id: string
-    candidate_name: string
-    candidate_email: string
-    created_at: string
-    ai_status: string
-    ai_score: number
-    criteria_evaluation: any
-    resume_url: string
-    job_id?: string | null
-    pipeline_status?: string
-    ai_explanation?: string
-    execution_stage?: string
-}
+import { JobApplication } from '@/lib/types'
+
 
 interface CandidateCardProps {
     candidate: JobApplication

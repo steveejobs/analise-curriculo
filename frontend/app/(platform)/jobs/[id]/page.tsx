@@ -10,7 +10,7 @@ import {
     Filter
 } from 'lucide-react'
 import Link from 'next/link'
-import { PipelineBoard } from '@/components/crm/PipelineBoard'
+import { Candidate } from '@/lib/types'
 
 export default function JobDetailsPage() {
     const params = useParams()
@@ -23,16 +23,6 @@ export default function JobDetailsPage() {
         location?: string;
         type?: string;
         created_at: string;
-    }
-
-    interface Candidate {
-        id: string;
-        candidate_name: string;
-        email: string;
-        ai_score: number;
-        ai_status: string;
-        created_at: string;
-        matching_rationale?: string;
     }
 
     const [job, setJob] = useState<Job | null>(null)
@@ -55,11 +45,11 @@ export default function JobDetailsPage() {
             // Fetch Candidates
             const { data: candidatesData } = await supabase
                 .from('job_applications')
-                .select('id, candidate_name, email, ai_score, ai_status, created_at')
+                .select('*') // Buscando todos os campos conforme definido no tipo Candidate do global lib/types.ts
                 .eq('job_id', jobId)
                 .order('ai_score', { ascending: false })
 
-            if (candidatesData) setCandidates(candidatesData)
+            if (candidatesData) setCandidates(candidatesData as any)
 
             setLoading(false)
         }

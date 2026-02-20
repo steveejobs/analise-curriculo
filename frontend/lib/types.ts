@@ -19,6 +19,10 @@ export interface JobApplication {
     pipeline_status?: string
     ai_explanation?: string
     execution_stage?: string
+    matching_rationale?: string
+    rationale?: string
+    location?: string
+    is_discarded?: boolean
 }
 
 export interface Candidate extends JobApplication {
